@@ -1,0 +1,32 @@
+<button routerLink="">Ajouter un timeline</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Catégorie</th>
+      <th>Date de création</th>
+      <th>Date de maj</th>
+      <th>Nombre de cartes</th>
+      <th>Editer ?</th>
+      <th>Jouer !</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Ici je fais une directive structurelle ngFor sur une ligne de tableau pour qu'il y en ait autant que de timeline dans la liste -->
+    <tr *ngFor="let timeline of timelineList | async">
+      <td>{{timeline.id}}</td>
+      <td>{{timeline.name}}</td>
+      <td>{{timeline.category}}</td>
+      <td>{{timeline.creationDate}}</td>
+      <td>{{timeline.updateDate}}</td>
+      <td>{{timeline.cardList.length}}</td>
+      <!-- Deux écritures différentes pour le router link mais le même principe -->
+      <td><a [routerLink]="['edit', timeline.id]">Editer</a></td>
+      <td><a routerLink="play/{{timeline.id}}">Jouer</a></td>
+      <td><button (click)="onDeleteTimeline(timeline.id)">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>

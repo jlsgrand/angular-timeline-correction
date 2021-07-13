@@ -1,0 +1,65 @@
+.guess-control > * {
+  margin: 5px 10px;
+}
+
+.clue {
+  background-color: ghostwhite;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+img {
+  border-radius: 10px;
+  max-width: 280px;
+  max-height: 200px;
+  margin-bottom: 20px;
+}
+
+.foundCards {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.card {
+  border: solid thin black;
+  background-color: lightgray;
+  width: 300px;
+  margin: 0 auto 20px auto;
+  border-radius: 5px;
+}
+
+input {
+  font-size: 1rem;
+  padding: 0.25rem;
+  vertical-align: middle;
+  box-shadow: 0 0 0 transparent;
+  border: 1px solid #999;
+  outline: 0 none;
+  transition: box-shadow 0.5s;
+}
+
+input.wrong-guess {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0.5em red;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+
+  25% {
+    margin-left: 0.5rem;
+  }
+
+  75% {
+    margin-left: -0.5rem;
+  }
+
+  100% {
+    margin-left: 0rem;
+  }
+}

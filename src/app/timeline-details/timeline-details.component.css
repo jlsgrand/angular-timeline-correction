@@ -1,0 +1,17 @@
+.form-control {
+  margin: 10px;
+}
+
+label {
+  margin: 0 10px 0 0;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(234, 222, 218, 1);
+  width: 70%;
+  margin: auto;
+  border-radius: 5px;
+}

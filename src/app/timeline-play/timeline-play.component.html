@@ -1,0 +1,37 @@
+<!-- J'ai besoin d'un formulaire avec un input de type number pour deviner l'année -->
+<form [formGroup]="guessForm" (ngSubmit)="guessCard()">
+  <!--  J'ai besoin d'afficher aussi un boutton pour deviner -->
+  <label for="guess">Date</label>
+  <input type="number" id="guess" formControlName="date">
+  <button type="submit">Deviner</button>
+  <!--  J'ai besoin de mettre un span pour afficher l'indice quand je ne trouve pas l'année -->
+  <span (mouseover)="showClue()" (mouseleave)="hideClue()">{{clue}}</span>
+</form>
+
+<!-- Je dois afficher la carte à deviner si et seulement si, j'ai encore des cartes à deviner -->
+<h1>Carte à deviner</h1>
+<div class="card">
+  <h2>{{guessingCard?.name}}</h2>
+  <div class="img-container">
+    <img src="{{guessingCard?.imageUrl}}" alt="">
+  </div>
+  <p>{{guessingCard?.description}}</p>
+</div>
+<div *ngIf="guessingCard === null">
+  <h1>Bravo, vous avez tout trouvé !</h1>
+</div>
+
+<!-- Enfin j'ai besoin d'une section avec un directive structurelle ngFor pour afficher la liste des cartes devinées -->
+<h1>Cartes trouvées</h1>
+<div class="foundCards">
+  <div class="card" *ngFor="let guessedCard of guessedCards">
+    <h2>{{guessedCard.name}}</h2>
+    <h4>{{guessedCard.date | date:'dd/MM/yyyy'}}</h4>
+    <div class="img-container">
+      <img src="{{guessedCard.imageUrl}}" alt="">
+    </div>
+    <p>{{guessedCard.description}}</p>
+  </div>
+</div>
+
+

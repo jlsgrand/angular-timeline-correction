@@ -1,0 +1,56 @@
+<!-- Détails du timeline -->
+<h2>Détails du timeline</h2>
+<!-- Formulaire d'édition du timeline -->
+<form [formGroup]="timelineForm" (ngSubmit)="onTimelineSave()">
+  <label for="timeline-name">Nom</label>
+  <input type="text" id="timeline-name" formControlName="name">
+  <label for="timeline-category">Catégorie</label>
+  <input type="text" id="timeline-category" formControlName="category">
+  <label for="timeline-creation-date">Date de création</label>
+  <input type="date" id="timeline-creation-date" formControlName="creationDate">
+  <button type="submit">Sauvegarder les propriétés du timeline</button>
+</form>
+
+<div *ngIf="timeline">
+  <!-- Détails d'une carte -->
+  <h2>Détails d'une carte</h2>
+  <!-- Formulaire d'édition d'une carte -->
+  <form [formGroup]="cardForm">
+    <label for="card-name">Nom</label>
+    <input type="text" id="card-name" formControlName="name">
+    <label for="card-date">Date</label>
+    <input type="date" id="card-date" formControlName="date">
+    <label for="card-image-url">Lien image</label>
+    <input type="text" id="card-image-url" formControlName="imageUrl">
+    <label for="card-description">Date de création</label>
+    <input type="text" id="card-description" formControlName="description">
+    <button type="submit">Sauvegarder la carte</button>
+  </form>
+
+  <!-- Liste des cartes -->
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Lien image</th>
+        <th>Description</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of timeline.cardList; index as cardIndex">
+        <td>{{card.id}}</td>
+        <td>{{card.name}}</td>
+        <td>{{card.date}}</td>
+        <td>{{card.imageUrl}}</td>
+        <td>{{card.description}}</td>
+        <td><button (click)="onCardEdit(card)">Editer</button></td>
+        <td><button (click)="onCardDelete(card.id, cardIndex)">Supprimer</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
